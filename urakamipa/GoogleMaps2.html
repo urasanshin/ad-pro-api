@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Simple Map</title>
+    <meta name="viewport" content="initial-scale=1.0">
+    <meta charset="utf-8">
+    <style>
+        #map {
+            height: 100%;
+        }
+
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+<body>
+<div id="map"></div>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js" type="text/javascript"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAzWsXFcJFrFus3n1QZrl6u-oNZ1m2YhTw&callback=initMap"
+        async defer></script>
+<script type="text/javascript">
+    function initMap() {
+
+        var map = new google.maps.Map(document.getElementById('map'), {
+            center: {lat: 34.802383, lng: 135.770464},
+            zoom: 6
+        });
+
+        $.ajax({
+            type: 'GET',
+            url: 'https://vb38rgfmql.execute-api.ap-northeast-1.amazonaws.com/api/',
+            dataType: '',
+            success: function (data) {
+                maker=[]
+                //取得成功したら実行する処理
+                // console.log("ファイルの取得に成功しました");
+                // console.log(JSON.stringify(data));
+                for (var entry in data['results']) {
+                    //alert(JSON.stringify(data['results'][entry]))
+                    var message1 = (JSON.stringify(data['results'][entry].lat));
+                    var message2 = (JSON.stringify(data['results'][entry].lon));
+                    //alert(message1)
+                    //alert(message2)
+                    var location = {lat: Number(message1), lng: Number(message2)};
+                    //alert(location)
+
+                    // var marker = new google.maps.Marker(
+                    //     {
+                    //         position: location,
+                    //         map: map
+
+
+                    //function initMap() {
+                    // var location = {lat: 34.802383, lng: 135.770464}; 標準のMaker
+                    // var map = new google.maps.Map(document.getElementById('map'), {
+                    //   center: location,
+                    //   zoom: 4});
+                    // var marker = new google.maps.Marker({
+                    //     position: location,
+                    //     map: map
+
+
+
+
+
+
+                    var marker = new google.maps.Marker(
+                        {
+                            position: location,
+                            map: map
+
+                        });
+
+
+                    // alert(JSON.stringify(location))
+                }
+            }
+        });
+    }
+
+    // error: function () {
+    //     取得失敗時に実行する処理
+    // console.log("何らかの理由で失敗しました");
+    // }
+
+
+    //                 $(function () {
+    //                     $('#ajax-button').click(
+    //                         function () {
+    //                             $.ajax({
+    //                                 type:"get",
+    //                                 url: 'https://vb38rgfmql.execute-api.ap-northeast-1.amazonaws.com/api/',
+    //                                 dataType: 'api'
+    //                             }).done(function (data) {
+    //                 var message = jsonParser(data);
+    //                 $('results').html(message);
+    //             }).fail(function (data) {
+    //                 $('#sample-results').html('<font color="red">読み込みNG(ChromeではNG)</font>');
+    //             })
+    //         }
+    //     );
+    // });
+    //
+    // /*
+    // * JSONデータ（リスト）をパースする関数です。
+    // */
+    // function jsonParser(data) {
+    //     var message1 = "";
+    //     var message2 = "";
+    //     var count = 0;
+    //     $(data.results).each(function () {
+    //         message1 = message1 + data.results[1]['lat'];
+    //         //message = message + ' ： ';
+    //         message2 = message2 + data.results[1]['lon']};
+    //         //message1 = message1 + '<br/>';
+    //         count++;
+
+
+    // function getJSON() {
+    //     var req = new XMLHttpRequest();		  // XMLHttpRequest オブジェクトを生成する
+    //     req.onreadystatechange = function() {		  // XMLHttpRequest オブジェクトの状態が変化した際に呼び出されるイベントハンドラ
+    //         if(req.readyState == 4 && req.status == 200){ // サーバーからのレスポンスが完了し、かつ、通信が正常に終了した場合
+    //             alert(req.responseText);		          // 取得した JSON ファイルの中身を表示
+    //         }
+    //     };
+    //     req.open("GET", "https://vb38rgfmql.execute-api.ap-northeast-1.amazonaws.com/api/", false); // HTTPメソッドとアクセスするサーバーの　URL　を指定
+    //     req.send(null);					    // 実際にサーバーへリクエストを送信
+    // }
+
+
+</script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js" type="text/javascript"></script>
+>
+
+<script src="https://vb38rgfmql.execute-api.ap-northeast-1.amazonaws.com/api/"></script>
+</body>
+</html>

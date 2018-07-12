@@ -1,0 +1,15 @@
+{
+  "version": "2.0",
+  "app_name": "urakamipa",
+  "stages": {
+    "dev": {
+      "environment_variables": {
+        "CONSUMER_KEY":"BEBu4JKEwtF8eSFwMOiGI1DZ0",
+        "CONSUMER_SECRET" : "uMQq2iaryMrG3h6NoEC7iICA4LR5yYbBsviawQi3XGmfWk87Iy",
+        "ACCESS_TOKEN" : "1014462544835108865-rYn3x1vmBPmeLvs6K31hr2dFA14OD4",
+        "ACCESS_TOKEN_SECRET" : "OWXBBfWqAMbuqtZFf9xJIaLPmvw2QcCjN8OjE7mBvNrK4"
+      },
+      "api_gateway_stage": "api"
+    }
+  }
+}

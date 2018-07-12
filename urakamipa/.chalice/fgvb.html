@@ -1,0 +1,37 @@
+<meta charset="utf-8">
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js" type="text/javascript"></script>
+<script type="text/javascript">
+
+    $.ajax({
+        type: 'GET',
+        url: 'https://vb38rgfmql.execute-api.ap-northeast-1.amazonaws.com/api/',
+        dataType: '',
+        success: function (data) {
+            //取得成功したら実行する処理
+            console.log("ファイルの取得に成功しました");
+            // console.log(JSON.stringify(data));
+            for (var entry in data['results']) {
+                alert(JSON.stringify(data['results'][entry]))
+                var message1 = JSON.stringify(data['results'][entry].lat)
+                var message2 = JSON.stringify(data['results'][entry].lon)
+                alert(Number(message1))
+                alert(Number(message2))
+                // var c = JSON.stringify(data['results'])
+                // alert(c)
+                // alert(JSON.stringify(data, null, "" +"\t"))
+            }
+        },
+        error: function () {
+            //取得失敗時に実行する処理
+            console.log("何らかの理由で失敗しました");
+        }
+
+    });
+
+
+
+
+
+
+
+</script>
